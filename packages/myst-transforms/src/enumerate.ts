@@ -639,7 +639,7 @@ export function addContainerCaptionNumbersTransform(
     .filter((container: Container) => container.enumerator)
     .forEach((container: Container) => {
       const target = opts.state.getTarget(container.identifier)?.node;
-      if (!target?.enumerator) return;
+      if (!target?.enumerator || container.unnumbered) return;
       // Only look for direct caption children
       let para = select(
         'paragraph',

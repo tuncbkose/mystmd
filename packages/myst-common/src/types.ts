@@ -12,6 +12,7 @@ export type GenericNode<T extends Record<string, any> = Record<string, any>> = {
   identifier?: string;
   label?: string;
   position?: Node['position'];
+  unnumbered?: boolean;
 } & T;
 
 export type GenericParent<T extends Record<string, any> = Record<string, any>> = GenericNode<T> & {

@@ -59,6 +59,10 @@ export const figureDirective: DirectiveSpec = {
       type: String,
       doc: 'A placeholder image when using a notebook cell as the figure contents. This will be shown in place of the Jupyter output until an execution environment is attached. It will also be used in static outputs, such as a PDF output.',
     },
+    unnumbered: {
+      type: Boolean,
+      doc: 'Whether the figure caption should be numbered (e.g. as "Figure x") or not',
+    },
     'no-subfigures': {
       type: Boolean,
       doc: 'Disallow implicit subfigure creation from child nodes',
@@ -113,6 +117,9 @@ export const figureDirective: DirectiveSpec = {
     };
     if (data.options?.['no-subfigures']) {
       container.noSubcontainers = true;
+    }
+    if (data.options?.unnumbered) {
+      container.unnumbered = true;
     }
     return [container];
   },
